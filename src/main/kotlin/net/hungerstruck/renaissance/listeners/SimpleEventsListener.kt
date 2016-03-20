@@ -12,11 +12,11 @@ import org.bukkit.event.entity.EntityExplodeEvent
 import org.bukkit.event.weather.WeatherChangeEvent
 
 /**
- * Cancels world events in loaded matches that have not started
+ * Cancels world events in matches that have not started
  */
 class SimpleEventsListener : Listener {
     /**
-     * Cancels an event if the match state is LOADED (the world has been loaded but players are not in it)
+     * Cancels an event if the match state is not PLAYING (the world has been loaded but players are not in it)
      */
     private fun cancelEventIfNotStarted(event: org.bukkit.event.Cancellable, world: World) {
         if (shouldCancel(world))
@@ -24,11 +24,12 @@ class SimpleEventsListener : Listener {
     }
 
     /**
-     * Returns true if the match exists and is LOADED state
+     * Returns true if the match exists and is not in PLAYING state
      */
     private fun shouldCancel(world: World): Boolean{
-        return Renaissance.matchManager.matches.get(world) != null && Renaissance.matchManager.matches.get(world).state == RMatch.State.LOADED
+        return Renaissance.matchManager.matches.get(world) != null && Renaissance.matchManager.matches.get(world)!!.state != RMatch.State.PLAYING
     }
+
 
     @EventHandler
     public fun onBlockRedstoneEvent(event: BlockRedstoneEvent) {
