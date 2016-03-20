@@ -29,11 +29,11 @@ class SimpleEventsListener : Listener {
     private fun shouldCancel(world: World): Boolean{
         return Renaissance.matchManager.matches.get(world) != null && Renaissance.matchManager.matches.get(world).state == RMatch.State.LOADED
     }
-    
+
     @EventHandler
     public fun onBlockRedstoneEvent(event: BlockRedstoneEvent) {
         if(shouldCancel(event.block.world))
-            event.newCurrent = 0;
+            event.newCurrent = event.oldCurrent;
     }
 
     @EventHandler
