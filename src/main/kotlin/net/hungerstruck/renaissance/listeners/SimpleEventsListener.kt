@@ -1,4 +1,4 @@
-package net.hungerstruck.renaissance.listeners;
+package net.hungerstruck.renaissance.listeners
 
 import net.hungerstruck.renaissance.Renaissance
 import net.hungerstruck.renaissance.match.RMatch
@@ -20,21 +20,20 @@ class SimpleEventsListener : Listener {
      */
     private fun cancelEventIfNotStarted(event: org.bukkit.event.Cancellable, world: World) {
         if (shouldCancel(world))
-            event.isCancelled = true;
+            event.isCancelled = true
     }
 
     /**
      * Returns true if the match exists and is not in PLAYING state
      */
-    private fun shouldCancel(world: World): Boolean{
+    private fun shouldCancel(world: World): Boolean {
         return Renaissance.matchManager.matches.get(world) != null && Renaissance.matchManager.matches.get(world)!!.state != RMatch.State.PLAYING
     }
 
-
     @EventHandler
     public fun onBlockRedstoneEvent(event: BlockRedstoneEvent) {
-        if(shouldCancel(event.block.world))
-            event.newCurrent = event.oldCurrent;
+        if (shouldCancel(event.block.world))
+            event.newCurrent = event.oldCurrent
     }
 
     @EventHandler
