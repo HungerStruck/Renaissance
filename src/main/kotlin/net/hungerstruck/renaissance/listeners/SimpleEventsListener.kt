@@ -4,27 +4,91 @@ import net.hungerstruck.renaissance.Renaissance
 import net.hungerstruck.renaissance.match.RMatch
 import org.bukkit.World
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
-import org.bukkit.event.block.BlockBreakEvent
+import org.bukkit.event.block.*
 import org.bukkit.event.entity.CreatureSpawnEvent
+import org.bukkit.event.entity.EntityExplodeEvent
 import org.bukkit.event.weather.WeatherChangeEvent
 
+/**
+ * Cancels world events in loaded matches that have not started
+ */
 class SimpleEventsListener : Listener {
+    /**
+     * Cancels an event if the match state is LOADED (the world has been loaded but players are not in it)
+     */
+    private fun cancelEventIfNotStarted(event: org.bukkit.event.Cancellable, world: World) {
+        if (shouldCancel(world))
+            event.isCancelled = true;
+    }
+
+    /**
+     * Returns true if the match exists and is LOADED state
+     */
+    private fun shouldCancel(world: World): Boolean{
+        return Renaissance.matchManager.matches.get(world) != null && Renaissance.matchManager.matches.get(world).state == RMatch.State.LOADED
+    }
+    
+    @EventHandler
+    public fun onBlockRedstoneEvent(event: BlockRedstoneEvent) {
+        if(shouldCancel(event.block.world))
+            event.newCurrent = 0;
+    }
+
     @EventHandler
     public fun onCreatureSpawn(event: CreatureSpawnEvent) {
-        val match = getMatchByWorld(event.entity.world) ?: return
-        if(match.state == RMatch.State.LOADED)
-            event.isCancelled = true;
+        cancelEventIfNotStarted(event, event.entity.world)
     }
 
     @EventHandler
     public fun onWeatherChange(event: WeatherChangeEvent) {
-        val match = getMatchByWorld(event.world) ?: return
-        if(match.state == RMatch.State.LOADED)
-            event.isCancelled = true;
+        cancelEventIfNotStarted(event, event.world)
     }
 
-    private fun getMatchByWorld(world: World) : RMatch? {
-        return Renaissance.matchManager.matches.get(world)
+    @EventHandler(priority = EventPriority.LOW)
+    public fun onEntityExplode(event: EntityExplodeEvent) {
+        cancelEventIfNotStarted(event, event.location.world)
     }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onBurn(event: BlockBurnEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onFade(event: BlockFadeEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onForm(event: BlockFormEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onSpread(event: BlockSpreadEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onFromTo(event: BlockFromToEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onBlockIgnite(event: BlockIgniteEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onPistonExtend(event: BlockPistonExtendEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun onPistonRetract(event: BlockPistonRetractEvent) {
+        cancelEventIfNotStarted(event, event.block.world)
+    }
+
 }
