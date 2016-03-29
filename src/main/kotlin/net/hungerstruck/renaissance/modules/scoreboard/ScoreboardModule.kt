@@ -82,6 +82,6 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboard.setScore(-1, "§1 ").setScore(-2, "§6§lTime").setScore(-3, "00:00")
         scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
-        scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lServer").setScore(-12, "server")
+        //scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lServer").setScore(-12, "server")
     }
 }
