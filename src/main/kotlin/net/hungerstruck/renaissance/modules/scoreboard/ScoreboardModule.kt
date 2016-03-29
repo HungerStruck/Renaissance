@@ -11,6 +11,7 @@ import net.hungerstruck.renaissance.rplayer
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
@@ -25,10 +26,12 @@ import java.util.UUID
 class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     val scoreboardMap: MutableMap<UUID, RScoreboard>
+    val killMap: MutableMap<UUID, Int>
     var timer = 0
 
     init {
         scoreboardMap = HashMap<UUID, RScoreboard>()
+        killMap = HashMap<UUID, Int>()
         registerEvents(this)
     }
 
@@ -54,18 +57,31 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         Bukkit.getScheduler().cancelTask(timer)
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler
     fun onPlayerDeath(event: PlayerDeathEvent){
         if(match.players.contains(event.entity.rplayer)){
             for(scoreboard in scoreboardMap.values){
-                scoreboard.setScore(-6, (match.alivePlayers.size-1).toString()).show()
+                scoreboard.setScore(-9, (match.alivePlayers.size-1).toString()).show()
+            }
+
+            if(event.entity.killer is Player){
+                val killer: Player = event.entity.killer
+
+                if(killMap.containsKey(killer.uniqueId)){
+                    killMap.put(killer.uniqueId, killMap[killer.uniqueId]?.and(1)!!)
+                } else {
+                    killMap.put(killer.uniqueId, 1)
+                }
+
+                scoreboardMap.get(killer.uniqueId)?.setScore(-6, killMap[killer.uniqueId].toString())?.show()
             }
         }
     }
 
     private fun setupScoreboard(scoreboard: RScoreboard) {
         scoreboard.setScore(-1, "§1 ").setScore(-2, "§6§lTime").setScore(-3, "00:00")
-        scoreboard.setScore(-4, "§2 ").setScore(-5, "§3§lAlive").setScore(-6, this.match.alivePlayers.size.toString())
-        scoreboard.setScore(-7, "§3 ").setScore(-8, "§5§lServer").setScore(-9, "server")
+        scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
+        scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
+        scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lServer").setScore(-12, "server")
     }
 }

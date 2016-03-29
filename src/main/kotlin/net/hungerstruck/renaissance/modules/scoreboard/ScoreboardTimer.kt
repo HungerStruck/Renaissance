@@ -15,7 +15,7 @@ class ScoreboardTimer(private val module: ScoreboardModule) : Runnable {
         val time = formatTime()
 
         for (p in module.match.players) {
-            module.scoreboardMap[p.uniqueId]?.setScore(-3, time)?.setScore(-6, module.match.alivePlayers.size.toString())?.show()
+            module.scoreboardMap[p.uniqueId]?.setScore(-3, time)?.setScore(-9, module.match.alivePlayers.size.toString())?.show()
         }
 
         seconds++
