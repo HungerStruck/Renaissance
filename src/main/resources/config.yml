@@ -14,21 +14,21 @@ lobby:
     minimum-players: 2
     maximum-players: 24
     start-countdown:
-        message: "§2The lobby will end in §c%s §2seconds"
+        message: "§f§l» §r§eThe lobby will end in §6%s §esecond(s)."
         time: 20
 
 match:
     join-strategy: "SMALLEST"
     start-countdown:
-        message: "§2The games will begin in §c%s §2seconds"
+        message: "§f§l» §r§eThe games will begin in §6%s §esecond(s)."
         time: 20
     feast:
         time: 300
         rarity-increase: 0.15
-        message: "§bThere has been a feast!"
+        message: "§f§l» §r§3There has been a feast!"
 
-    death-player-message: "§c%0$s §7was slain by §c%1$c§7. \n§c%2$d §bplayers remain."
-    death-other-message: "§c%0$s §7mysteriously died. \n§c%2$d §bplayers remain."
+    death-player-message: "§f§l» §r§c%0$s §7was slain by §c%1$c§7. \n§c%2$d §bplayers remain."
+    death-other-message: "§f§l» §r§c%0$s §7mysteriously died. \n§c%2$d §bplayers remain."
     end-message-list:
     - "§5 # # # # # # # # # # # #"
     - "§5# # §6   Game Over!   §5  # #"
