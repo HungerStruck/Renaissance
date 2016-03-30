@@ -87,12 +87,12 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
 
     @EventHandler
     fun onThirstUpdate(event: RPlayerThirstUpdateEvent){
-        scoreboardMap[event.player.uniqueId]?.setScore(-15, event.thirst.toString() + "%")
+        scoreboardMap[event.player.uniqueId]?.setScore(-15, event.thirst.toString() + "%")?.show()
     }
 
     @EventHandler
     fun onSanityUpdate(event: RPlayerSanityUpdateEvent){
-        scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%")
+        scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%")?.show()
     }
 
     private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
