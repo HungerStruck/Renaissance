@@ -88,8 +88,8 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
         if(match.alivePlayers.contains(player)) {
-            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "sanity")
-            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "thirst")
+            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "0")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "0")
         }
     }
 }
