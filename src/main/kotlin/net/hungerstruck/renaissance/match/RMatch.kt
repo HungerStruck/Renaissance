@@ -67,11 +67,6 @@ class RMatch {
     public fun startMatch() {
         state = State.PLAYING
 
-        for (player: RPlayer in alivePlayers){
-            player.playSound(player.location, Sound.LEVEL_UP, 2f, 2f)
-            player.playSound(player.location, Sound.BAT_DEATH, 1f, 2f)
-        }
-
         Bukkit.getPluginManager().callEvent(RMatchStartEvent(this))
     }
 
