@@ -107,6 +107,8 @@ class ThirstModule(match: RMatch, document: Document, modCtx: RModuleContext) : 
 
             event.player.sendMessage("You quench your thirst.")
             event.player.exp = 1f
+
+            Bukkit.getPluginManager().callEvent(RPlayerThirstUpdateEvent(event.player.rplayer, playerThirst[event.player]!!))
         }
     }
 
