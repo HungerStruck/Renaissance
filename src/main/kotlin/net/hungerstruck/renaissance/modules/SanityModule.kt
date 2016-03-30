@@ -144,8 +144,6 @@ class SanityModule(match: RMatch, document: Document, modCtx: RModuleContext) : 
                     level -= sanityChange
                     cause = Cause.CAVE
                 }
-
-                Bukkit.getPluginManager().callEvent(RPlayerSanityUpdateEvent(player, playerSanity[player]!!))
             }
 
             // Radius decrement.
@@ -173,6 +171,8 @@ class SanityModule(match: RMatch, document: Document, modCtx: RModuleContext) : 
                 playerSanity[player] = level.clamp(0, 100 - sanityChange) + sanityChange
                 player.level = level.clamp(0, 100 - sanityChange) + sanityChange
             }
+
+            Bukkit.getPluginManager().callEvent(RPlayerSanityUpdateEvent(player, playerSanity[player]!!))
         }
     }
 

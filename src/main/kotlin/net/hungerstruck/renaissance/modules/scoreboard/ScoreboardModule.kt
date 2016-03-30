@@ -87,12 +87,12 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
 
     @EventHandler
     fun onThirstUpdate(event: RPlayerThirstUpdateEvent){
-        scoreboardMap[event.player.uniqueId]?.setScore(-15, event.thirst.toString() + "%")?.show()
+        scoreboardMap[event.player.uniqueId]?.setScore(-15, event.thirst.toString() + "%§1 ")?.show()
     }
 
     @EventHandler
     fun onSanityUpdate(event: RPlayerSanityUpdateEvent){
-        scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%")?.show()
+        scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%§2 ")?.show()
     }
 
     private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
@@ -100,8 +100,8 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
         if(match.alivePlayers.contains(player)) {
-            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "100%")
-            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "100%")
+            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "100%§1 ")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "100%§2 ")
         }
     }
 }
