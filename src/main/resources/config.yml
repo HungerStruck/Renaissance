@@ -27,8 +27,9 @@ match:
         rarity-increase: 0.15
         message: "§f§l» §r§3There has been a feast!"
 
-    death-player-message: "§f§l» §r§c%0$s §7was slain by §c%1$c§7. \n§f§l» §r§c%2$d §7players remain."
-    death-other-message: "§f§l» §r§c%0$s §7mysteriously died. \n§f§l» §r§c%2$d §7players remain."
+    death-player-message: "§f§l» §r§c%0$s §7was slain by §c%1$c§7."
+    death-other-message: "§f§l» §r§c%0$s §7mysteriously died."
+    player-remain-message: "§f§l» §r§6%0$d §7players remain"
     end-message-list:
     - "§5 # # # # # # # # # # # #"
     - "§5# # §6   Game Over!   §5  # #"

@@ -48,8 +48,9 @@ object RConfig {
         var feastRarityIncrease: Double by path("match.feast.rarity-increase", 0.15)
         var feastMessage: String by path("match.feast.message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.DARK_AQUA}There has been a feast!")
 
-        var playerDeathByPlayerMessage: String by path("match.death-player-message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%0\$s ${ChatColor.GRAY}was slain by ${ChatColor.RED}%1\$s${ChatColor.GRAY}. \n${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%2\$d ${ChatColor.GRAY}players remain.")
-        var playerDeathByOtherMessage: String by path("match.death-other-message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%0\$s ${ChatColor.GRAY}mysteriously died. \n${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%2\$d ${ChatColor.GRAY}players remain.")
+        var playerDeathByPlayerMessage: String by path("match.death-player-message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%0\$s ${ChatColor.GRAY}was slain by ${ChatColor.RED}%1\$s${ChatColor.GRAY}.")
+        var playerDeathByOtherMessage: String by path("match.death-other-message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.RED}%0\$s ${ChatColor.GRAY}mysteriously died.")
+        var playerRemainMessage: String by path("match.player-remain-message", "${ChatColor.WHITE}${ChatColor.BOLD}»${ChatColor.RESET} ${ChatColor.GOLD}%0\$d ${ChatColor.GRAY}players remain.")
         var matchEndMessageTitle : String by path("math.end-message-title", "${ChatColor.GOLD}" + "%s")
         var matchEndMessageSubTitle : String by path("math.end-message-subtitle", "${ChatColor.DARK_PURPLE}" + " wins!")
         var matchEndMessageFadeIn : Int by path("math.end-message-fade-in", 2);

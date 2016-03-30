@@ -72,7 +72,7 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         RPlayer.updateVisibility()
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler
     fun onPlayerDeath(event: PlayerDeathEvent) {
         if (!isMatch(event.entity)) return
         if (match.state != RMatch.State.PLAYING) return
@@ -86,7 +86,8 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         if (match.alivePlayers.size != 1) {
             val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
             // Still players alive.
-            match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName, match.alivePlayers.size).toString())
+            match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName).toString())
+            match.sendMessage(RConfig.Match.playerRemainMessage.replace("%0\$d", match.alivePlayers.size.toString()))
         } else {
             // We have a winner.
             match.sendTitle(RConfig.Match.matchEndMessageTitle.format(match.alivePlayers[0].displayName), RConfig.Match.matchEndMessageSubTitle, RConfig.Match.matchEndMessageFadeIn, RConfig.Match.matchEndMessageDuration, RConfig.Match.matchEndMessageFadeOut )
