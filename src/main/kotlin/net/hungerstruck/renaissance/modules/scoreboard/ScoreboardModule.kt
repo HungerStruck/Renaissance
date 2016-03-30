@@ -7,9 +7,12 @@ import net.hungerstruck.renaissance.event.match.RMatchEndEvent
 import net.hungerstruck.renaissance.event.match.RMatchLoadEvent
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
 import net.hungerstruck.renaissance.match.RMatch
+import net.hungerstruck.renaissance.modules.SanityModule
 import net.hungerstruck.renaissance.rplayer
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
+import net.hungerstruck.renaissance.xml.module.RModuleInfo
+import net.hungerstruck.renaissance.xml.module.RModuleRegistry
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -39,7 +42,7 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
     fun onMatchStart(event: RMatchStartEvent) {
         for (p in event.match.players) {
             val scoreboard = RScoreboard("§e§lHungerStruck", p.uniqueId)
-            setupScoreboard(scoreboard)
+            setupScoreboard(scoreboard, p)
             scoreboard.show()
             scoreboardMap.put(p.uniqueId, scoreboard)
         }
@@ -73,15 +76,20 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
                     killMap.put(killer.uniqueId, 1)
                 }
 
-                scoreboardMap.get(killer.uniqueId)?.setScore(-6, killMap[killer.uniqueId].toString())?.show()
+                scoreboardMap[killer.uniqueId]?.setScore(-6, killMap[killer.uniqueId].toString())?.show()
             }
+
+            scoreboardMap[event.entity.uniqueId]?.removeScore(-10)?.removeScore(-11)?.removeScore(-12)?.removeScore(-13)?.removeScore(-14)?.removeScore(-15)?.show()
         }
     }
 
-    private fun setupScoreboard(scoreboard: RScoreboard) {
+    private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
         scoreboard.setScore(-1, "§1 ").setScore(-2, "§6§lTime").setScore(-3, "00:00")
         scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
-        //scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lServer").setScore(-12, "server")
+        if(match.alivePlayers.contains(player)) {
+            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "sanity")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "thirst")
+        }
     }
 }
