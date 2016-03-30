@@ -3,6 +3,7 @@ package net.hungerstruck.renaissance.modules.scoreboard
 import net.hungerstruck.renaissance.RPlayer
 import net.hungerstruck.renaissance.Renaissance
 import net.hungerstruck.renaissance.RenaissancePlugin
+import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.event.match.RMatchEndEvent
 import net.hungerstruck.renaissance.event.match.RMatchLoadEvent
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
@@ -37,7 +38,7 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
     init {
         scoreboardMap = HashMap<UUID, RScoreboard>()
         killMap = HashMap<UUID, Int>()
-        registerEvents(this)
+        registerEvents()
     }
 
     @EventHandler
@@ -64,15 +65,15 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
 
     @EventHandler
     fun onPlayerDeath(event: PlayerDeathEvent){
-        if(match.players.contains(event.entity.rplayer)){
-            for(scoreboard in scoreboardMap.values){
+        if (match.players.contains(event.entity.rplayer)){
+            for (scoreboard in scoreboardMap.values){
                 scoreboard.setScore(-9, (match.alivePlayers.size-1).toString()).show()
             }
 
-            if(event.entity.killer is Player){
+            if (event.entity.killer is Player){
                 val killer: Player = event.entity.killer
 
-                if(killMap.containsKey(killer.uniqueId)){
+                if (killMap.containsKey(killer.uniqueId)){
                     killMap.put(killer.uniqueId, killMap[killer.uniqueId]?.and(1)!!)
                 } else {
                     killMap.put(killer.uniqueId, 1)
@@ -96,12 +97,12 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
     }
 
     private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
-        scoreboard.setScore(-1, "§1 ").setScore(-2, "§6§lTime").setScore(-3, "00:00")
-        scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
-        scoreboard.setScore(-7, "§3 ").setScore(-8, "§2§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
-        if(match.alivePlayers.contains(player)) {
-            scoreboard.setScore(-10, "§4 ").setScore(-11, "§5§lSanity").setScore(-12, "100%§1 ")
-            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "100%§2 ")
+        scoreboard.setScore(-1, "§1 ").setScore(-2, RConfig.Scoreboard.timeString).setScore(-3, "00:00")
+        scoreboard.setScore(-4, "§2 ").setScore(-5, RConfig.Scoreboard.killsString).setScore(-6, "0")
+        scoreboard.setScore(-7, "§3 ").setScore(-8, RConfig.Scoreboard.aliveString).setScore(-9, this.match.alivePlayers.size.toString())
+        if (match.alivePlayers.contains(player)) {
+            scoreboard.setScore(-10, "§4 ").setScore(-11, RConfig.Scoreboard.sanityString).setScore(-12, "100%§1 ")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, RConfig.Scoreboard.thirstString).setScore(-15, "100%§2 ")
         }
     }
 }

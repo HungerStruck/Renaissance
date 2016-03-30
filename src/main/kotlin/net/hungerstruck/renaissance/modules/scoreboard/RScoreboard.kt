@@ -44,12 +44,12 @@ class RScoreboard(private var title: String?, vararg players: UUID) {
     }
 
     fun addPlayers(vararg players: UUID): RScoreboard {
-        this.players.addAll(Arrays.asList(*players))
+        this.players.addAll(arrayListOf(*players))
         return this
     }
 
     fun removePlayers(vararg players: UUID): RScoreboard {
-        this.players.removeAll(Arrays.asList(*players))
+        this.players.removeAll(arrayListOf(*players))
         return this
     }
 

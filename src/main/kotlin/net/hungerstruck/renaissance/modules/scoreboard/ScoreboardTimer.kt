@@ -24,8 +24,8 @@ class ScoreboardTimer(private val module: ScoreboardModule) : Runnable {
     private fun formatTime(): String {
         val hours = seconds / 3600
         val hourRem = seconds % 3600
-        val mins = (hourRem/60)
-        val secs = (hourRem%60)
+        val mins = hourRem / 60
+        val secs = hourRem % 60
 
         var hourString = hours.toString()
         var minString = mins.toString()
