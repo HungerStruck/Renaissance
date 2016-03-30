@@ -6,6 +6,8 @@ import net.hungerstruck.renaissance.RenaissancePlugin
 import net.hungerstruck.renaissance.event.match.RMatchEndEvent
 import net.hungerstruck.renaissance.event.match.RMatchLoadEvent
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
+import net.hungerstruck.renaissance.event.player.RPlayerSanityUpdateEvent
+import net.hungerstruck.renaissance.event.player.RPlayerThirstUpdateEvent
 import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.modules.SanityModule
 import net.hungerstruck.renaissance.rplayer
@@ -83,13 +85,23 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         }
     }
 
+    @EventHandler
+    fun onThirstUpdate(event: RPlayerThirstUpdateEvent){
+        scoreboardMap[event.player.uniqueId]?.setScore(-15, event.thirst.toString() + "%")
+    }
+
+    @EventHandler
+    fun onSanityUpdate(event: RPlayerSanityUpdateEvent){
+        scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%")
+    }
+
     private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
         scoreboard.setScore(-1, "§1 ").setScore(-2, "§6§lTime").setScore(-3, "00:00")
         scoreboard.setScore(-4, "§2 ").setScore(-5, "§4§lKills").setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, "§3§lAlive").setScore(-9, this.match.alivePlayers.size.toString())
         if(match.alivePlayers.contains(player)) {
-            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "0")
-            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "0")
+            scoreboard.setScore(-10, "§4 ").setScore(-11, "§7§lSanity").setScore(-12, "100%")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, "§7§lThirst").setScore(-15, "100%")
         }
     }
 }

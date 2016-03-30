@@ -3,6 +3,7 @@ package net.hungerstruck.renaissance.modules
 import net.hungerstruck.renaissance.*
 import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
+import net.hungerstruck.renaissance.event.player.RPlayerThirstUpdateEvent
 import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
@@ -60,6 +61,7 @@ class ThirstModule(match: RMatch, document: Document, modCtx: RModuleContext) : 
             }
 
             player.exp = playerThirst[player]!! / 100f
+            Bukkit.getPluginManager().callEvent(RPlayerThirstUpdateEvent(player, playerThirst[player]!!))
         }
     }
 
