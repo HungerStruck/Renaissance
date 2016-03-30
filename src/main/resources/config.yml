@@ -1,5 +1,6 @@
 general:
     no-matches: "§cThere are no lobbies or matches available.\n\nRejoin later!"
+    main-message-prefix: "§l»§r "
 
 maps:
     map-dir: "maps"
@@ -14,22 +15,22 @@ lobby:
     minimum-players: 2
     maximum-players: 24
     start-countdown:
-        message: "§f§l» §r§eThe lobby will end in §6%s §esecond(s)."
+        message: "§eThe lobby will end in §6%s §esecond(s)."
         time: 20
 
 match:
     join-strategy: "SMALLEST"
     start-countdown:
-        message: "§f§l» §r§eThe games will begin in §6%s §esecond(s)."
+        message: "§eThe games will begin in §6%s §esecond(s)."
         time: 20
     feast:
         time: 300
         rarity-increase: 0.15
-        message: "§f§l» §r§3There has been a feast!"
+        message: "§3There has been a feast!"
 
-    death-player-message: "§f§l» §r§c%0$s §7was slain by §c%1$c§7."
-    death-other-message: "§f§l» §r§c%0$s §7mysteriously died."
-    player-remain-message: "§f§l» §r§6%0$d §7players remain"
+    death-player-message: "§c%0$s §7was slain by §c%1$c§7."
+    death-other-message: "§c%0$s §7mysteriously died."
+    player-remain-message: "§6%0$d §7players remain"
     end-message-list:
     - "§5 # # # # # # # # # # # #"
     - "§5# # §6   Game Over!   §5  # #"

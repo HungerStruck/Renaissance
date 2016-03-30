@@ -10,6 +10,7 @@ import net.hungerstruck.renaissance.util.TitleUtil
 import net.hungerstruck.renaissance.xml.RMap
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.Sound
 import org.bukkit.World
 
@@ -44,7 +45,7 @@ class RMatch {
 
     public fun sendMessage(msg: String, f: (RPlayer) -> Boolean = { true }) {
         Bukkit.getConsoleSender().sendMessage("[match-$id] $msg")
-        players.filter(f).forEach { it.sendMessage(msg) }
+        players.filter(f).forEach { it.sendMessage(RConfig.General.mainMessagePrefix + msg) }
     }
 
     public fun sendTitle(title: String, subtitle: String, fadeIn: Int, stay: Int, fadeOut: Int, f: (RPlayer) -> Boolean = { true }) {
