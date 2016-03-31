@@ -33,15 +33,10 @@ class ParticleModule(match: RMatch, document: Document, modCtx: RModuleContext) 
 
     @EventHandler
     fun onMatchCountdownTick(event: RMatchCountdownTickEvent) {
-        if (event.timeLeft <= 5) {
-            val players = getPlayers(event.match)
-            for (player in event.match.alivePlayers) {
-                RParticle(RParticleType.RED_DUST, player.location.add(0.0, 2.0, 0.0)).playRGB(players, random.nextInt(255), random.nextInt(255), random.nextInt(255))
-            }
-        }
-
         if (event.timeLeft == 5){
-            timer = ParticlePedestalRunnable(event.match.moduleContext.getModule<PedestalModule>() as PedestalModule).runTaskTimer(Renaissance.plugin, 0, 3)
+            timer = ParticlePedestalRunnable(event.match.moduleContext.getModule<PedestalModule>() as PedestalModule, true).runTaskTimer(Renaissance.plugin, 0, 3)
+        } else if(event.timeLeft >5 && event.timeLeft%10 == 0){
+            timer = ParticlePedestalRunnable(event.match.moduleContext.getModule<PedestalModule>() as PedestalModule, false).runTaskTimer(Renaissance.plugin, 0, 3)
         }
     }
 
@@ -51,7 +46,8 @@ class ParticleModule(match: RMatch, document: Document, modCtx: RModuleContext) 
 
         val fireworkEffect = RFirework.randomEffect
         for (pedistal in (event.match.moduleContext.getModule<PedestalModule>() as PedestalModule).pedestals) {
-            RFirework(1, fireworkEffect).play(pedistal.loc.toLocation(match.world))
+            var fwork = RFirework(1, fireworkEffect).play(pedistal.loc.toLocation(match.world))
+            Bukkit.getScheduler().runTaskLater(Renaissance.plugin, {fwork.detonate()}, 20)
         }
     }
 

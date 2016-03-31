@@ -32,8 +32,7 @@ class SoundModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
     @EventHandler
     fun onMatchStart(event: RMatchStartEvent) {
         for (player in event.match.alivePlayers) {
-            player.playSound(player.location, Sound.LEVEL_UP, 2f, 2f)
-            player.playSound(player.location, Sound.BAT_DEATH, 1f, 2f)
+            player.playSound(player.location, Sound.ENDERDRAGON_GROWL, 1f, 1f)
         }
     }
 
