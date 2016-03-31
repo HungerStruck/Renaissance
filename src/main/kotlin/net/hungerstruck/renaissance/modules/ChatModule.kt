@@ -31,9 +31,9 @@ class ChatModule(match: RMatch, document: Document, modCtx: RModuleContext) : RM
 
         if (match.state == RMatch.State.PLAYING) {
             if (rplayer.state == RPlayer.State.PARTICIPATING) {
-                match.sendMessage("<${rplayer.displayName}> ${event.message}", { it.location.distance(rplayer.location) <= RConfig.Chat.radius })
+                match.sendPrefixlessMessage("<${rplayer.displayName}> ${event.message}", { it.location.distance(rplayer.location) <= RConfig.Chat.radius })
             } else {
-                match.sendMessage("<${ChatColor.AQUA}${rplayer.displayName}${ChatColor.WHITE}> ${event.message}", { it.state == RPlayer.State.SPECTATING })
+                match.sendPrefixlessMessage("<${ChatColor.AQUA}${rplayer.displayName}${ChatColor.WHITE}> ${event.message}", { it.state == RPlayer.State.SPECTATING })
             }
         } else {
             match.sendMessage("<${ChatColor.AQUA}${rplayer.displayName}${ChatColor.WHITE}> ${event.message}")

@@ -48,6 +48,11 @@ class RMatch {
         players.filter(f).forEach { it.sendMessage(RConfig.General.mainMessagePrefix + msg) }
     }
 
+    public fun sendPrefixlessMessage(msg: String, f: (RPlayer) -> Boolean = { true }) {
+        Bukkit.getConsoleSender().sendMessage("[match-$id] $msg")
+        players.filter(f).forEach { it.sendMessage(msg) }
+    }
+
     public fun sendTitle(title: String, subtitle: String, fadeIn: Int, stay: Int, fadeOut: Int, f: (RPlayer) -> Boolean = { true }) {
         Bukkit.getConsoleSender().sendMessage("[match-$id] $title $subtitle")
         players.filter(f).forEach { TitleUtil.sendTitle(it, title, subtitle, fadeIn, stay, fadeOut) }
