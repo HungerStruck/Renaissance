@@ -29,7 +29,7 @@ object RConfig {
         var defaultLobby: String by path("lobby.default-lobby-map")
         var joinStrategy: JoinStrategy by path("lobby.join-strategy", { JoinStrategy.valueOf(it) }, { it.name })
 
-        var chatFormat: String by path("lobby.chat-format", "<%s> %s")
+        var chatFormat: String by path("lobby.chat-format", "%s ${ChatColor.GRAY}${RConfig.General.mainMessagePrefix}%s")
 
         var autoStart: Boolean by path("lobby.auto-start", true)
         var minimumPlayerStartCount: Int by path("lobby.minimum-players", 2)

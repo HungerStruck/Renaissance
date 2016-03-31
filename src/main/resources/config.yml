@@ -10,7 +10,7 @@ maps:
 lobby:
     default-lobby-map: "Lobby"
     join-strategy: "SMALLEST"
-    chat-format: "<%s> %s"
+    chat-format: "%s §7§l»§r %s"
     auto-start: true
     minimum-players: 2
     maximum-players: 24
