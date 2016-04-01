@@ -84,8 +84,8 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         victim.allowFlight = true
 
         //TODO When merged with UX change the messages, death message goes here
-        val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
-        match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName, match.alivePlayers.size).toString())
+        //val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
+        //match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName, match.alivePlayers.size).toString())
 
         if (match.endCheck()) {
             var winner: RPlayer
