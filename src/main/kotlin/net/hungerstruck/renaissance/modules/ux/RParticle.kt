@@ -1,8 +1,10 @@
 package net.hungerstruck.renaissance.modules.ux
 
 import net.hungerstruck.renaissance.RPlayer
+import net.hungerstruck.renaissance.match.RMatch
 import net.minecraft.server.v1_8_R3.EnumParticle
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles
+import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
@@ -122,5 +124,15 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
 
     fun playRGB(r: Int, g: Int, b: Int, vararg players: Player): RParticle {
         return playRGB(arrayListOf(*players), r, g, b)
+    }
+
+    fun getPlayers(match: RMatch): List<Player> {
+        val players: MutableList<Player> = arrayListOf()
+
+        for (rplayer in match.players){
+            players.add(Bukkit.getPlayer(rplayer.uniqueId))
+        }
+
+        return players
     }
 }

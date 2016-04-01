@@ -50,14 +50,4 @@ class ParticleModule(match: RMatch, document: Document, modCtx: RModuleContext) 
             Bukkit.getScheduler().runTaskLater(Renaissance.plugin, {fwork.detonate()}, 20)
         }
     }
-
-    private fun getPlayers(match: RMatch): List<Player> {
-        val players: MutableList<Player> = arrayListOf()
-
-        for (rplayer in match.players){
-            players.add(Bukkit.getPlayer(rplayer.uniqueId))
-        }
-
-        return players
-    }
 }
