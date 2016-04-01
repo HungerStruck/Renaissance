@@ -10,6 +10,7 @@ import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.teleportable
 import net.hungerstruck.renaissance.xml.RMap
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.ChatColor.*
 import org.bukkit.GameMode
 import org.bukkit.World
@@ -50,6 +51,8 @@ class RLobby {
 
         updateInformation()
 
+        sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
+
         if (members.size >= RConfig.Lobby.minimumPlayerStartCount && members.size <= RConfig.Lobby.maximumPlayerStartCount && RConfig.Lobby.autoStart) {
             startCountdown()
         }
@@ -83,6 +86,6 @@ class RLobby {
 
     public fun sendMessage(msg: String) {
         Bukkit.getConsoleSender().sendMessage("[lobby-$id] $msg")
-        members.forEach { it.sendMessage(msg) }
+        members.forEach { it.sendMessage(RConfig.General.mainMessagePrefix + msg) }
     }
 }

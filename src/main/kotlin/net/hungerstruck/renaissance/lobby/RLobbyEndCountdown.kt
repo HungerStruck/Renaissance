@@ -13,7 +13,7 @@ class RLobbyEndCountdown(val lobby: RLobby) : Countdown() {
         val status = RConfig.Lobby.tickMessage.format(timeLeft)
 
         if (timeLeft % 10 == 0 || timeLeft <= 5)
-            lobby.sendMessage(RConfig.General.mainMessagePrefix + status)
+            lobby.sendMessage(status)
     }
 
     override fun onFinish() {
