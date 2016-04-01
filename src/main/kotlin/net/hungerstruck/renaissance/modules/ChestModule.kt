@@ -121,6 +121,8 @@ class ChestModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
     private fun fillChests(coll: RandomCollection<ItemStack>) {
         processedChests.clear()
         lastItems = coll
+        var chests: MutableList<BlockRegion> = arrayListOf()
+        chests.addAll(this.chests)
 
         for (chest in chests) {
             fillChest(coll, chest)
