@@ -12,6 +12,7 @@ import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
@@ -79,10 +80,12 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         victim.reset(false)
         // TODO: use StruckBukkit collision API
         //victim.spigot().collidesWithEntities = false
+        victim.gameMode = GameMode.SPECTATOR //TEMP
+
         victim.allowFlight = true
 
         val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
-        match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName).toString())
+        match.sendMessage(message.replace("%0\$s", victim.displayName).replace("%1\$c", victim.killer.rplayer?.displayName).toString())
 
         if (match.endCheck()) {
             var winner: RPlayer

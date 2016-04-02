@@ -116,7 +116,7 @@ class RMatch {
 
         val bar = Bukkit.createBossBar(TextComponent("${ChatColor.LIGHT_PURPLE}${player.displayName} ${ChatColor.DARK_PURPLE}has won the game!"), BarColor.PINK, BarStyle.SOLID, BarFlag.DARKEN_SKY, BarFlag.PLAY_BOSS_MUSIC)
         bar.isVisible = true
-        for (player in players) bar.addPlayer(player)
+        for (player in players.map{it.bukkit}) bar.addPlayer(player)
 
         if (player.isOnline) player.allowFlight = true
         RPlayer.updateVisibility()

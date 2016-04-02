@@ -52,9 +52,11 @@ class ParticleModule(match: RMatch, document: Document, modCtx: RModuleContext) 
 
     @EventHandler
     fun onMatchEnd(event: RMatchEndEvent) {
-        for (i in 0..9) {
-            RFirework.playRandom(Location(event.match.world, randomValue(), randomValue(), randomValue()))
-        }
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Renaissance.plugin, {
+            for (i in 0..4) {
+                RFirework.playRandom(Location(event.match.world, randomValue(), 70.0, randomValue()))
+            }
+        }, 0, 20)
     }
 
     private fun randomValue(): Double {
