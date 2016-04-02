@@ -25,6 +25,6 @@ class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerHit(event: EntityDamageEvent) {
         if (event.isCancelled || !isMatch(event.entity)) return
-        match.players.forEach { it.particles().play(particle.setLocation(it.location.add(0.0, 1.0, 0.0))) }
+        match.players.forEach { it.particles().play(particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0))) }
     }
 }
