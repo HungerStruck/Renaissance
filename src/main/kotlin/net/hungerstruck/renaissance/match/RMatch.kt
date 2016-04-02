@@ -96,12 +96,7 @@ class RMatch {
         }
     }
 
-    fun endCheck(): Boolean {
-        if (alivePlayers.size <= 1) {
-            return true
-        }
-        return false
-    }
+    fun endCheck() = alivePlayers.size <= 1
 
     fun announceWinner(player: RPlayer) {
         sendTitle(RConfig.Match.matchEndMessageTitle.format(player.displayName), RConfig.Match.matchEndMessageSubTitle, RConfig.Match.matchEndMessageFadeIn, RConfig.Match.matchEndMessageDuration, RConfig.Match.matchEndMessageFadeOut)

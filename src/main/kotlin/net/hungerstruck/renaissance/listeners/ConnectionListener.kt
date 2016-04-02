@@ -41,22 +41,22 @@ class ConnectionListener : Listener {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    fun onPlayerQuit(event: PlayerQuitEvent){
-        if (event.player.rplayer.match != null){
+    fun onPlayerQuit(event: PlayerQuitEvent) {
+        if (event.player.rplayer.match != null) {
             val match = event.player.rplayer.match
 
-            if(match?.state == RMatch.State.PLAYING && event.player.rplayer.state == RPlayer.State.PARTICIPATING){
+            if (match?.state == RMatch.State.PLAYING && event.player.rplayer.state == RPlayer.State.PARTICIPATING) {
                 event.player.health = 0.0
             }
         }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    fun onPlayerKick(event: PlayerKickEvent){
-        if (event.player.rplayer.match != null){
+    fun onPlayerKick(event: PlayerKickEvent) {
+        if (event.player.rplayer.match != null) {
             val match = event.player.rplayer.match
 
-            if(match?.state == RMatch.State.PLAYING && event.player.rplayer.state == RPlayer.State.PARTICIPATING){
+            if (match?.state == RMatch.State.PLAYING && event.player.rplayer.state == RPlayer.State.PARTICIPATING) {
                 event.player.health = 0.0
             }
         }
