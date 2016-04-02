@@ -96,7 +96,7 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%§2 ")?.show()
     }
 
-    private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
+    public fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
         scoreboard.setScore(-1, "§1 ").setScore(-2, RConfig.Scoreboard.timeString).setScore(-3, "00:00")
         scoreboard.setScore(-4, "§2 ").setScore(-5, RConfig.Scoreboard.killsString).setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, RConfig.Scoreboard.aliveString).setScore(-9, this.match.alivePlayers.size.toString())

@@ -23,7 +23,7 @@ class RMatch {
     val world: World
     var state: State = State.LOADED
 
-    private val moduleContext: RModuleContext
+    val moduleContext: RModuleContext
 
     val players: List<RPlayer>
         get() = RPlayer.getPlayers() { it.match == this }
