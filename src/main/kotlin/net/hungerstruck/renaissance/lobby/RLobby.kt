@@ -57,7 +57,7 @@ class RLobby {
                 player2.showPlayer(player)
                 player.showPlayer(player2)
             }
-        }, 2)
+        }, 5)
 
         sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
 
@@ -94,5 +94,10 @@ class RLobby {
     public fun sendMessage(msg: String) {
         Bukkit.getConsoleSender().sendMessage("[lobby-$id] $msg")
         members.forEach { it.sendMessage(RConfig.General.mainMessagePrefix + msg) }
+    }
+
+    public fun sendPrefixlessMessage(msg: String) {
+        Bukkit.getConsoleSender().sendMessage("[lobby-$id] $msg")
+        members.forEach { it.sendMessage(msg) }
     }
 }
