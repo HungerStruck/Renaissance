@@ -50,7 +50,7 @@ class RLobby {
 
         updateInformation()
 
-        for(player2 in lobbyWorld.spawnLocation.world.players) player2.showPlayer(player)
+        RPlayer.updateVisibility()
 
         if (members.size >= RConfig.Lobby.minimumPlayerStartCount && members.size <= RConfig.Lobby.maximumPlayerStartCount && RConfig.Lobby.autoStart) {
             startCountdown()
