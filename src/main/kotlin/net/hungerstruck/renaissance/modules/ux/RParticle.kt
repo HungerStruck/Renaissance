@@ -6,6 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
+import java.util.*
 
 /**
  * Created by teddy on 31/03/2016.
@@ -100,7 +101,7 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return this
     }
 
-    fun play(players: Collection<Player>): RParticle {
+    fun play(players: Iterable<Player>): RParticle {
         val packet = PacketPlayOutWorldParticles(particleType!!.particle, longDistance, location!!.x.toFloat(), location!!.y.toFloat(), location!!.z.toFloat(), offsetX, offsetY, offsetZ, particleData, particleCount, *data)
         for (p in players) {
             (p as CraftPlayer).handle.playerConnection.sendPacket(packet)
@@ -112,7 +113,7 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return play(arrayListOf(*players))
     }
 
-    fun playRGB(players: Collection<Player>, r: Int, g: Int, b: Int): RParticle {
+    fun playRGB(players: Iterable<Player>, r: Int, g: Int, b: Int): RParticle {
         val packet = PacketPlayOutWorldParticles(particleType!!.particle, longDistance, location!!.x.toFloat(), location!!.y.toFloat(), location!!.z.toFloat(), r.toFloat() / 255, g.toFloat() / 255, b.toFloat() / 255, 1f, 0, *data)
         for (p in players) {
             (p as CraftPlayer).handle.playerConnection.sendPacket(packet)
@@ -123,6 +124,4 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
     fun playRGB(r: Int, g: Int, b: Int, vararg players: Player): RParticle {
         return playRGB(arrayListOf(*players), r, g, b)
     }
-
-    fun getPlayers(match: RMatch) = match.players.map {it.bukkit}
 }
