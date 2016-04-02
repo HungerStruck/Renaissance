@@ -83,6 +83,7 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         victim.spigot().collidesWithEntities = false
         victim.allowFlight = true
 
+        val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
         match.sendMessage(Formatter().format(message, victim.displayName, victim.killer?.displayName).toString())
 
         if (match.endCheck()) {
