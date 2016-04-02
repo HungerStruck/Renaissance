@@ -11,11 +11,9 @@ import net.hungerstruck.renaissance.event.player.RPlayerSanityUpdateEvent
 import net.hungerstruck.renaissance.event.player.RPlayerThirstUpdateEvent
 import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.modules.SanityModule
+import net.hungerstruck.renaissance.modules.ThirstModule
 import net.hungerstruck.renaissance.rplayer
-import net.hungerstruck.renaissance.xml.module.RModule
-import net.hungerstruck.renaissance.xml.module.RModuleContext
-import net.hungerstruck.renaissance.xml.module.RModuleInfo
-import net.hungerstruck.renaissance.xml.module.RModuleRegistry
+import net.hungerstruck.renaissance.xml.module.*
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -29,6 +27,7 @@ import java.util.UUID
 /**
  * Created by teddy on 29/03/2016.
  */
+@Dependencies(ThirstModule::class, SanityModule::class)
 class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     val scoreboardMap: MutableMap<UUID, RScoreboard>
@@ -103,8 +102,8 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboard.setScore(-4, "§2 ").setScore(-5, RConfig.Scoreboard.killsString).setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, RConfig.Scoreboard.aliveString).setScore(-9, this.match.alivePlayers.size.toString())
         if (match.alivePlayers.contains(player)) {
-            scoreboard.setScore(-10, "§4 ").setScore(-11, RConfig.Scoreboard.sanityString).setScore(-12, "100%§1 ")
-            scoreboard.setScore(-13, "§5 ").setScore(-14, RConfig.Scoreboard.thirstString).setScore(-15, "100%§2 ")
+            scoreboard.setScore(-10, "§4 ").setScore(-11, RConfig.Scoreboard.sanityString).setScore(-12, "${match.moduleContext.getModule<SanityModule>()!!.playerSanity[player]}%§1 ")
+            scoreboard.setScore(-13, "§5 ").setScore(-14, RConfig.Scoreboard.thirstString).setScore(-15, "${match.moduleContext.getModule<ThirstModule>()!!.playerThirst[player]}%§2 ")
         }
     }
 }
