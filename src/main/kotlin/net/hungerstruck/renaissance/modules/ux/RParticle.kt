@@ -1,8 +1,6 @@
 package net.hungerstruck.renaissance.modules.ux
 
-import net.hungerstruck.renaissance.RPlayer
 import net.hungerstruck.renaissance.match.RMatch
-import net.minecraft.server.v1_8_R3.EnumParticle
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles
 import org.bukkit.Bukkit
 import org.bukkit.Location
@@ -102,10 +100,10 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return this
     }
 
-    fun play(players: List<Player>): RParticle {
+    fun play(players: Collection<Player>): RParticle {
         val packet = PacketPlayOutWorldParticles(particleType!!.particle, longDistance, location!!.x.toFloat(), location!!.y.toFloat(), location!!.z.toFloat(), offsetX, offsetY, offsetZ, particleData, particleCount, *data)
         for (p in players) {
-            ((p as Player) as CraftPlayer).handle.playerConnection.sendPacket(packet)
+            (p as CraftPlayer).handle.playerConnection.sendPacket(packet)
         }
         return this
     }
@@ -114,10 +112,10 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return play(arrayListOf(*players))
     }
 
-    fun playRGB(players: List<Player>, r: Int, g: Int, b: Int): RParticle {
+    fun playRGB(players: Collection<Player>, r: Int, g: Int, b: Int): RParticle {
         val packet = PacketPlayOutWorldParticles(particleType!!.particle, longDistance, location!!.x.toFloat(), location!!.y.toFloat(), location!!.z.toFloat(), r.toFloat() / 255, g.toFloat() / 255, b.toFloat() / 255, 1f, 0, *data)
         for (p in players) {
-            ((p as Player) as CraftPlayer).handle.playerConnection.sendPacket(packet)
+            (p as CraftPlayer).handle.playerConnection.sendPacket(packet)
         }
         return this
     }
@@ -126,13 +124,5 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return playRGB(arrayListOf(*players), r, g, b)
     }
 
-    fun getPlayers(match: RMatch): List<Player> {
-        val players: MutableList<Player> = arrayListOf()
-
-        for (rplayer in match.players){
-            players.add(Bukkit.getPlayer(rplayer.uniqueId))
-        }
-
-        return players
-    }
+    fun getPlayers(match: RMatch): Collection<Player> = match.players.map {it.bukkit}
 }

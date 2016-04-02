@@ -4,7 +4,6 @@ import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Material
-import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
@@ -23,8 +22,7 @@ class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
 
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerHit(event: EntityDamageEvent) {
-        if (event.isCancelled) return
+        if (event.isCancelled || !isMatch(event.entity)) return
         particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0)).play(particle.getPlayers(match))
-        particle.getLocation().world.playSound(particle.getLocation(), Sound.BLAZE_HIT, 1f, 1f)
     }
 }

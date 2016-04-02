@@ -1,6 +1,5 @@
 package net.hungerstruck.renaissance.modules.ux
 
-import net.hungerstruck.renaissance.RPlayer
 import net.hungerstruck.renaissance.event.match.RMatchCountdownTickEvent
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
 import net.hungerstruck.renaissance.match.RMatch

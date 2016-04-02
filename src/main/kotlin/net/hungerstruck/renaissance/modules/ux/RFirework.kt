@@ -1,20 +1,20 @@
 package net.hungerstruck.renaissance.modules.ux
 
+import net.hungerstruck.renaissance.randomElement
 import org.bukkit.DyeColor
 import org.bukkit.FireworkEffect
 import org.bukkit.Location
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Firework
-
-import java.util.Random
+import java.util.*
 
 /**
  * Created by teddy on 31/03/2016.
  */
-class RFirework(private var power: Int, private var effect: FireworkEffect?) {
+class RFirework(private var power: Int, private var effect: FireworkEffect) {
 
     fun getEffect(): FireworkEffect {
-        return effect!!
+        return effect
     }
 
     fun setEffect(effect: FireworkEffect): RFirework {
@@ -43,18 +43,14 @@ class RFirework(private var power: Int, private var effect: FireworkEffect?) {
 
     companion object {
 
-        private var random: Random? = null
-
-        init {
-            random = Random()
-        }
+        private var random: Random? = Random()
 
         fun playRandom(location: Location): Firework {
             return RFirework(random!!.nextInt(2) + 1, randomEffect).play(location)
         }
 
         val randomEffect: FireworkEffect
-            get() = FireworkEffect.builder().flicker(random!!.nextBoolean()).with(FireworkEffect.Type.values()[random!!.nextInt(FireworkEffect.Type.values().size)]).withColor(DyeColor.values()[random!!.nextInt(DyeColor.values().size)].color).withFade(DyeColor.values()[random!!.nextInt(DyeColor.values().size)].color).trail(random!!.nextBoolean()).build()
+            get() = FireworkEffect.builder().flicker(random!!.nextBoolean()).with(FireworkEffect.Type.values().randomElement()).withColor(DyeColor.values().randomElement().color).withFade(DyeColor.values().randomElement().color).trail(random!!.nextBoolean()).build()
     }
 
 
