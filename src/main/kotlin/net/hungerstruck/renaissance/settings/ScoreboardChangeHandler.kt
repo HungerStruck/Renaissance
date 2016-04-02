@@ -12,7 +12,7 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 
 class ScoreboardChangeCallback : PlayerSettingCallback() {
-    override fun notifyChange(player: Player, setting: Setting, oldValue: Any, newValue: Any) {
+    override fun notifyChange(player: Player, setting: Setting, oldValue: Any?, newValue: Any?) {
         var scoreboardModule: ScoreboardModule = player.rplayer.match!!.moduleContext.getModule<ScoreboardModule>()!!
         if (newValue == true) {
             // show scoreboard
@@ -30,5 +30,4 @@ class ScoreboardChangeCallback : PlayerSettingCallback() {
             }
         }
     }
-
 }
