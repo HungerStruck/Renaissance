@@ -121,6 +121,11 @@ class ChestModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
     private fun fillChests(coll: RandomCollection<ItemStack>) {
         processedChests.clear()
         lastItems = coll
+
+        // Stops a concurrent modification error
+        // | Caused by fillChest() removing chests if
+        // | they do not exist.
+        // It is crude, so update if a better option is found
         var chests: MutableList<BlockRegion> = arrayListOf()
         chests.addAll(this.chests)
 
