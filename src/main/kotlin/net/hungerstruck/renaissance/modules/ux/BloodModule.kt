@@ -1,12 +1,11 @@
 package net.hungerstruck.renaissance.modules.ux
 
+import co.enviark.struckbukkit.effects.ParticleBuilder
 import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Material
 import org.bukkit.Particle
-import org.bukkit.builder.ParticleBuilder
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
