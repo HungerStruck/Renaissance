@@ -57,7 +57,7 @@ class RLobby {
                 player2.showPlayer(player)
                 player.showPlayer(player2)
             }
-        }, 1)
+        }, 2)
 
         sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
 
