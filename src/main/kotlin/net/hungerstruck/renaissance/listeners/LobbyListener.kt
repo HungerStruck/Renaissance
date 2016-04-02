@@ -68,7 +68,7 @@ class LobbyListener : Listener {
                 return
             }
 
-            if (!lobby.lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage) {
+            if (lobby.lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage) {
                 event.damage = 0.0
             } else {
                 event.isCancelled = true
@@ -85,7 +85,7 @@ class LobbyListener : Listener {
     @EventHandler
     public fun onHungerDrain(event: FoodLevelChangeEvent) {
         val lobby = getLobby(event.entity.world) ?: return
-        event.isCancelled = event.isCancelled || !lobby.lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage
+        event.isCancelled = true
     }
 
     private fun getLobby(world: World): RLobby? {
