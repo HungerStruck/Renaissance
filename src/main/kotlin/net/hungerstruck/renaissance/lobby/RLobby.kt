@@ -53,6 +53,8 @@ class RLobby {
 
         sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
 
+        RPlayer.updateVisibility()
+
         if (members.size >= RConfig.Lobby.minimumPlayerStartCount && members.size <= RConfig.Lobby.maximumPlayerStartCount && RConfig.Lobby.autoStart) {
             startCountdown()
         }
@@ -66,8 +68,7 @@ class RLobby {
 
     private fun updateInformation() {
         for (player in members) {
-            player.actionBarMessage = "${if (lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage) "${GREEN}PVP $GRAY| " else ""}${if (lobbyMap.mapInfo.lobbyProperties!!.canBreakBlocks) "${GREEN}Building $GRAY| " else ""}$YELLOW${members.size}/${RConfig.Lobby.maximumPlayerStartCount} players"
-            //player.actionBarMessage = "${if (lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage) GREEN else RED}PVP $GRAY| ${if (lobbyMap.mapInfo.lobbyProperties.canBreakBlocks) GREEN else RED}Building $GRAY| $YELLOW${members.size}/${RConfig.Lobby.maximumPlayerStartCount} players"
+            player.actionBarMessage = "${if (lobbyMap.mapInfo.lobbyProperties!!.canTakeDamage) "${GREEN}PVP $GRAY| " else ""}${if (lobbyMap.mapInfo.lobbyProperties!!.canBuild) "${GREEN}Building $GRAY| " else ""}$YELLOW${members.size}/${RConfig.Lobby.maximumPlayerStartCount} players"
         }
     }
 

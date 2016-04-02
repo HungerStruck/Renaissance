@@ -10,6 +10,7 @@ import net.hungerstruck.renaissance.match.RMatchManager
 import net.hungerstruck.renaissance.modules.*
 import net.hungerstruck.renaissance.modules.oregen.OregenModule
 import net.hungerstruck.renaissance.modules.region.RegionModule
+import net.hungerstruck.renaissance.modules.scoreboard.ScoreboardModule
 import net.hungerstruck.renaissance.modules.ux.BloodModule
 import net.hungerstruck.renaissance.modules.ux.ParticleModule
 import net.hungerstruck.renaissance.modules.ux.SoundModule
@@ -50,6 +51,7 @@ object Renaissance {
         RModuleRegistry.register<TimeSetModule>()
         RModuleRegistry.register<OregenModule>()
         RModuleRegistry.register<ThirstModule>()
+        RModuleRegistry.register<ScoreboardModule>()
         RModuleRegistry.register<SoundModule>()
         RModuleRegistry.register<ParticleModule>()
         RModuleRegistry.register<BloodModule>()
