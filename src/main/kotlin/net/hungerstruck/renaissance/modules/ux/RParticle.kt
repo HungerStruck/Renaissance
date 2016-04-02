@@ -124,5 +124,5 @@ class RParticle(private var particleType: RParticleType, private var longDistanc
         return playRGB(arrayListOf(*players), r, g, b)
     }
 
-    fun getPlayers(match: RMatch): Collection<Player> = match.players.map {it.bukkit}
+    fun getPlayers(match: RMatch) = match.players.map {it.bukkit}
 }
