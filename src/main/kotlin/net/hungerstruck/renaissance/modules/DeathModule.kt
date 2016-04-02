@@ -85,7 +85,7 @@ class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         victim.allowFlight = true
 
         val message = if (victim.killer != null) RConfig.Match.playerDeathByPlayerMessage else RConfig.Match.playerDeathByOtherMessage
-        match.sendMessage(message.replace("%0\$s", victim.displayName).replace("%1\$c", victim.killer.displayName))
+        match.sendMessage(message.replace("%0\$s", victim.displayName).replace("%1\$c", (victim.killer?.displayName).toString()))
 
         if (match.endCheck()) {
             var winner: RPlayer
