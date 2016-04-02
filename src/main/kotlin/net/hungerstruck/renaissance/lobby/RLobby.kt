@@ -51,9 +51,11 @@ class RLobby {
 
         updateInformation()
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Renaissance.plugin, {RPlayer.updateVisibility()}, 1)
+        for(player2 in lobbyWorld.spawnLocation.world.players) player2.showPlayer(player)
 
         sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
+
+        RPlayer.updateVisibility()
 
         if (members.size >= RConfig.Lobby.minimumPlayerStartCount && members.size <= RConfig.Lobby.maximumPlayerStartCount && RConfig.Lobby.autoStart) {
             startCountdown()
