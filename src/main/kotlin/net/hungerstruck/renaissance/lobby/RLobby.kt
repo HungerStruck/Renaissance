@@ -48,11 +48,9 @@ class RLobby {
         player.reset()
         player.gameMode = GameMode.SURVIVAL
 
-        player.teleport(lobbyWorld.spawnLocation.teleportable)
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Renaissance.plugin, {player.teleport(lobbyWorld.spawnLocation.teleportable)}, 1)
 
         updateInformation()
-
-        for (player2 in lobbyWorld.spawnLocation.world.players) player2.showPlayer(player)
 
         sendMessage("${ChatColor.GREEN}${player.displayName} ${ChatColor.GRAY}has joined the match!")
 
