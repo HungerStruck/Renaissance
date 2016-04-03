@@ -25,10 +25,6 @@ class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onPlayerHit(event: EntityDamageEvent) {
         if (event.isCancelled || !isMatch(event.entity)) return
-
-        val matchPlayers: MutableList<Player> = arrayListOf()
-        matchPlayers.addAll(match.players.map { it.bukkit }.filter { PlayerSettings.getManager(it).getValue(Settings.BLOOD_OPTIONS) == true})
-
-        matchPlayers.forEach { it.particles().play(particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0))) }
+        match.players.filter { it.getSetting<Boolean>(Settings.BLOOD_OPTIONS) == true }.forEach { it.bukkit.particles().play(particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0))) }
     }
 }
