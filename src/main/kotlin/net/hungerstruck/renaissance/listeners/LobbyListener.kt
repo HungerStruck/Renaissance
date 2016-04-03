@@ -19,8 +19,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent
 
 /**
  * As lobbies cannot contain modules (they are designed for matches), this listener handles block breaking, damage, etc.
- *
- * Created by molenzwiebel on 01-01-16.
  */
 class LobbyListener : Listener {
     //FIXME: Maybe cancel interacts (chests etc)?

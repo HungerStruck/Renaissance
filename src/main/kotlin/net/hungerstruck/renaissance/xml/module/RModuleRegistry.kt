@@ -5,9 +5,6 @@ import org.jdom2.Document
 import java.lang.reflect.Constructor
 import kotlin.reflect.KClass
 
-/**
- * Created by molenzwiebel on 21-12-15.
- */
 class RModuleRegistry {
     companion object {
         val MODULES: MutableList<RModuleInfo> = arrayListOf()

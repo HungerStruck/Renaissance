@@ -18,8 +18,6 @@ import org.bukkit.scheduler.BukkitScheduler
 
 /**
  * Manages a simple match-specific lobby.
- *
- * Created by molenzwiebel on 22-12-15.
  */
 class RLobby {
     val id: Int

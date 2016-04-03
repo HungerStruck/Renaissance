@@ -5,9 +5,6 @@ import net.hungerstruck.renaissance.modules.PedestalModule
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
 
-/**
- * Created by teddy on 31/03/2016.
- */
 class ParticlePedestalRunnable(private val module: PedestalModule, private val continuous: Boolean) : BukkitRunnable() {
 
     private var ped = 0

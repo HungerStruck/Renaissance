@@ -6,9 +6,6 @@ import org.bukkit.scoreboard.DisplaySlot
 
 import java.util.*
 
-/**
- * Created by teddy on 29/03/2016.
- */
 class RScoreboard(private var title: String?, vararg players: UUID) {
 
     private val scores: MutableMap<Int, String>

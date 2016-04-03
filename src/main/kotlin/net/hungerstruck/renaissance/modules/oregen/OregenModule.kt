@@ -18,8 +18,6 @@ import java.util.*
 
 /**
  * Handles ore generation.
- *
- * Created by molenzwiebel on 10-01-16.
  */
 @Dependencies(BoundaryModule::class)
 class OregenModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

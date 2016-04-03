@@ -7,8 +7,6 @@ import java.io.File
 
 /**
  * Bukkit config ftw.
- *
- * Created by molenzwiebel on 22-12-15.
  */
 object RConfig {
     val configFile: File = File("plugins/Renaissance/config.yml")

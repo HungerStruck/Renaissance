@@ -7,8 +7,6 @@ import java.io.File
 
 /**
  * Manages maps.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 class RMapContext {
     protected final val maps: MutableMap<String, RMap> = hashMapOf()

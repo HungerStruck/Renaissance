@@ -19,8 +19,6 @@ import org.jdom2.Document
 
 /**
  * Parses pedestals.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 @Dependencies(RegionModule::class)
 class PedestalModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

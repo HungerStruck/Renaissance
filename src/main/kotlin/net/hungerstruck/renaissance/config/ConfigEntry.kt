@@ -2,9 +2,6 @@ package net.hungerstruck.renaissance.config
 
 import kotlin.reflect.KProperty
 
-/**
- * Created by molenzwiebel on 22-12-15.
- */
 class ConfigEntry<T>(private val path: String) {
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
         return RConfig.config.get(path) as T

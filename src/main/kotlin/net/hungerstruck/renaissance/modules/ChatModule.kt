@@ -12,9 +12,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.jdom2.Document
 
-/**
- * Created by molenzwiebel on 03-01-16.
- */
 @Dependencies
 class ChatModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     init {

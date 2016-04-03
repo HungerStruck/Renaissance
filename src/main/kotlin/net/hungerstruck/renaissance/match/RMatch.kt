@@ -22,9 +22,7 @@ import org.bukkit.scheduler.BukkitScheduler
 
 /**
  * Represents a match.
- *
- * Created by molenzwiebel on 20-12-15.
- */
+*/
 class RMatch {
     val id: Int
     val map: RMap

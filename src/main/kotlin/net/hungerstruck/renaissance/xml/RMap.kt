@@ -11,8 +11,6 @@ import java.io.File
 
 /**
  * Represents a map.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 class RMap {
     val mapInfo: RMapInfo

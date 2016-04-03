@@ -12,8 +12,6 @@ import java.util.*
 
 /**
  * Manages lobbies.
- *
- * Created by molenzwiebel on 29-12-15.
  */
 class RLobbyManager {
     private val lobbies: MutableMap<World, RLobby> = hashMapOf()

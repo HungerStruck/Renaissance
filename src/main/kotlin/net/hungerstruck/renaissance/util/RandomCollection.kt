@@ -4,8 +4,6 @@ import java.util.*
 
 /**
  * Ported from HungerGames, idk who wrote it.
- *
- * Created by molenzwiebel on 03-01-16.
  */
 class RandomCollection<E> {
     val map: NavigableMap<Double, E> = TreeMap()

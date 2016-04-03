@@ -7,9 +7,6 @@ import net.hungerstruck.renaissance.event.match.RMatchCountdownTickEvent
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 
-/**
- * Created by molenzwiebel on 01-01-16.
- */
 class RMatchStartCountdown(val match: RMatch) : Countdown() {
     override fun onTick(timeLeft: Int) {
         val status = RConfig.Match.tickMessage.format(timeLeft)

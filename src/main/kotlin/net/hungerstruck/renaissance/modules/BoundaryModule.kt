@@ -19,8 +19,6 @@ import org.jdom2.Document
 
 /**
  * Boundary module.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 @Dependencies(RegionModule::class)
 class BoundaryModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

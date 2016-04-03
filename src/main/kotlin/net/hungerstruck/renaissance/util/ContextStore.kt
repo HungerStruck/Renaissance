@@ -4,8 +4,6 @@ import java.util.*
 
 /**
  * Overcast Commons ContextStore util
- *
- * Created by molenzwiebel on 21-12-15.
  */
 open class ContextStore<T> : Iterable<Map.Entry<String, T>> {
     protected val store: MutableMap<String, T> = linkedMapOf()

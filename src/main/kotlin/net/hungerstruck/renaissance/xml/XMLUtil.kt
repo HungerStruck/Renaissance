@@ -5,8 +5,6 @@ import org.jdom2.Element
 
 /**
  * Contains various XML parsing utilities.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 public fun Element.flatten(parentTag: String, childTag: String): List<Element> {
     val result: MutableList<Element> = arrayListOf()

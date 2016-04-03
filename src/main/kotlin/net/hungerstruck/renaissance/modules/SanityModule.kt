@@ -23,9 +23,6 @@ import org.bukkit.event.entity.PlayerDeathEvent
 import org.jdom2.Document
 import java.util.*
 
-/**
- * Created by molenzwiebel on 21-12-15.
- */
 @Dependencies(BoundaryModule::class)
 class SanityModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     val airHeight: Int

@@ -27,9 +27,6 @@ import org.bukkit.inventory.ItemStack
 import org.jdom2.Document
 import java.util.*
 
-/**
- * Created by molenzwiebel on 03-01-16.
- */
 @Dependencies(RegionModule::class)
 class ChestModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     val chests: MutableList<BlockRegion> = arrayListOf()

@@ -5,8 +5,6 @@ import org.bukkit.World
 
 /**
  * Contains information about a map.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 data class RMapInfo(
         val name: String,

@@ -7,9 +7,6 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.util.ChatPaginator
 
-/**
- * Created by neiljohari on 3/24/16.
- */
 object CommandUtils {
     /**
      * Gets a player from sender

@@ -5,9 +5,6 @@ import org.bukkit.generator.ChunkGenerator
 
 import java.util.Random
 
-/**
- * Created by teddy on 01/04/2016.
- */
 class RGenerator : ChunkGenerator() {
 
     override fun generate(world: World?, random: Random?, x: Int, z: Int): ByteArray {

@@ -26,9 +26,6 @@ import org.jdom2.Document
 import java.util.HashMap
 import java.util.UUID
 
-/**
- * Created by teddy on 29/03/2016.
- */
 class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     val scoreboardMap: MutableMap<UUID, RScoreboard>

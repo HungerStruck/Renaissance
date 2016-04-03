@@ -15,8 +15,6 @@ import org.jdom2.Document
 
 /**
  * Base class for modules.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 abstract class RModule : Listener {
     final val match: RMatch

@@ -8,9 +8,6 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Firework
 import java.util.*
 
-/**
- * Created by teddy on 31/03/2016.
- */
 class RFirework(private var power: Int, private var effect: FireworkEffect) {
 
     fun getEffect(): FireworkEffect {

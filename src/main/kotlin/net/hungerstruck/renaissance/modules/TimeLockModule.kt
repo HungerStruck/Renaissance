@@ -11,9 +11,6 @@ import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.jdom2.Document
 
-/**
- * Created by molenzwiebel on 21-12-15.
- */
 class TimeLockModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     val locked: Boolean
 

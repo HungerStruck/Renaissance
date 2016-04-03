@@ -13,8 +13,6 @@ import org.bukkit.inventory.ItemStack
 
 /**
  * Player object for our needs.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 class RPlayer(val bukkit: Player) : Player by bukkit {
     companion object : Listener {

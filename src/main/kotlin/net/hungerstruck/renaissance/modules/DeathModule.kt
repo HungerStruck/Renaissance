@@ -35,8 +35,6 @@ import java.util.*
 
 /**
  * Handles player death, respawning and observer interaction prevention.
- *
- * Created by molenzwiebel on 03-01-16.
  */
 @Dependencies
 class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

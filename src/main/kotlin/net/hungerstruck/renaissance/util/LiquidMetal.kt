@@ -2,8 +2,6 @@ package net.hungerstruck.renaissance.util
 
 /**
  * Port of LiquidMetal to Kotlin.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 class LiquidMetal {
     companion object {

@@ -7,9 +7,6 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 
-/**
- * Created by molenzwiebel on 22-12-15.
- */
 class RPlayerState internal constructor() {
     private var inventory: Array<ItemStack>? = null
     private var armorSlots: Array<ItemStack>? = null

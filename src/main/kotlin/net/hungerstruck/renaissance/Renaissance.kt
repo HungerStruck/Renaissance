@@ -24,8 +24,6 @@ import java.io.File
 
 /**
  * Main class.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 object Renaissance {
     var plugin: JavaPlugin? = null
