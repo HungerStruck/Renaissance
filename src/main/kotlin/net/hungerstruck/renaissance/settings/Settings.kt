@@ -10,7 +10,7 @@ import me.anxuiz.settings.types.EnumType
 
 object Settings {
     val SCOREBOARD_OPTIONS : Setting = SettingBuilder().name("Scoreboard").alias("sb").summary("Information scoreboard").type(BooleanType()).defaultValue(true).get()
-    val BLOOD_OPTIONS : Setting =   SettingBuilder().name("Blood").alias("b").summary("Blood particles when you get hit").description("Available options:\nON: Show blood\nOFF: No blood").type(EnumType("Blood Options", BloodOptions::class.java)).defaultValue(BloodOptions.OFF).get()
+    val BLOOD_OPTIONS : Setting =   SettingBuilder().name("Blood").alias("b").summary("Blood particles when you get hit").type(BooleanType()).defaultValue(true).get()
 
     fun register() {
         val registry = PlayerSettings.getRegistry()

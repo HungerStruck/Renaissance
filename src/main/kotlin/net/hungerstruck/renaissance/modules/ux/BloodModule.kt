@@ -3,7 +3,6 @@ package net.hungerstruck.renaissance.modules.ux
 import co.enviark.struckbukkit.effects.ParticleBuilder
 import me.anxuiz.settings.bukkit.PlayerSettings
 import net.hungerstruck.renaissance.match.RMatch
-import net.hungerstruck.renaissance.settings.BloodOptions
 import net.hungerstruck.renaissance.settings.Settings
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
@@ -28,7 +27,7 @@ class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         if (event.isCancelled || !isMatch(event.entity)) return
 
         val matchPlayers: MutableList<Player> = arrayListOf()
-        matchPlayers.addAll(match.players.map { it.bukkit }.filter { PlayerSettings.getManager(it).getValue(Settings.BLOOD_OPTIONS, BloodOptions::class.java) == BloodOptions.ON })
+        matchPlayers.addAll(match.players.map { it.bukkit }.filter { PlayerSettings.getManager(it).getValue(Settings.BLOOD_OPTIONS) == true})
 
         matchPlayers.forEach { it.particles().play(particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0))) }
     }
