@@ -30,17 +30,14 @@ class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : R
         if (event.isCancelled || !isMatch(event.entity)) return
 
         val matchPlayers: MutableList<Player> = arrayListOf()
-        matchPlayers.addAll(match.players.map {it.bukkit}.filter { PlayerSettings.getManager(it).getValue(Settings.BLOOD_OPTIONS, BloodOptions::class.java) == BloodOptions.ON })
+        matchPlayers.addAll(match.players.map { it.bukkit }.filter { PlayerSettings.getManager(it).getValue(Settings.BLOOD_OPTIONS, BloodOptions::class.java) == BloodOptions.ON })
         particle.setLocation(event.entity.location.add(0.0, 1.0, 0.0)).play(matchPlayers)
 
-        if(event is EntityDamageByEntityEvent) {
-            if(event.getDamager().getType() == EntityType.ARROW) {
-                for(player in matchPlayers)
-                    player.playEffect(event.getEntity().getLocation(), Effect.STEP_SOUND, 10);
-            }
-            if(event.getDamager() is Player) {
-                (event.damager as Player).playSound((event.damager as Player).getLocation(), Sound.HURT_FLESH, 200.0F, 200.0F)
-            }
-        }
+        if (event is EntityDamageByEntityEvent)
+            if (event.getDamager().type == EntityType.ARROW)
+                for (player in matchPlayers)
+                    player.playEffect(event.getEntity().getLocation(), Effect.STEP_SOUND, 10); // TODO: StruckBukkit playEffect is broken (origin of issue: SportBukkit)
+            else if (event.getDamager().type == EntityType.PLAYER)
+                (event.damager as Player).playSound((event.damager as Player).getLocation(), Sound.HURT_FLESH, 200.0F, 200.0F) // TODO: StruckBukkit playEffect is broken (origin of issue: SportBukkit)
     }
 }
