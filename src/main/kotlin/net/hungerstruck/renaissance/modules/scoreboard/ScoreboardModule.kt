@@ -13,6 +13,7 @@ import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.modules.SanityModule
 import net.hungerstruck.renaissance.modules.ThirstModule
 import net.hungerstruck.renaissance.rplayer
+import net.hungerstruck.renaissance.settings.Settings
 import net.hungerstruck.renaissance.xml.module.*
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
@@ -42,12 +43,9 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
 
     @EventHandler
     fun onMatchStart(event: RMatchStartEvent) {
-        for (p in event.match.players) {
-            val scoreboard = RScoreboard("§e§lHungerStruck", p.uniqueId)
-            setupScoreboard(scoreboard, p)
-            scoreboard.show()
-            scoreboardMap.put(p.uniqueId, scoreboard)
-        }
+        for (p in event.match.players)
+            if(p.getSetting<Boolean>(Settings.SCOREBOARD_OPTIONS) == true)
+                showScoreboard(p)
 
         timer = Bukkit.getScheduler().scheduleSyncRepeatingTask(Renaissance.plugin, ScoreboardTimer(this), 0, 20)
     }
@@ -55,7 +53,7 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
     @EventHandler
     fun onMatchEnd(event: RMatchEndEvent){
         for (p in event.match.players){
-            p.player.scoreboard = Bukkit.getScoreboardManager().mainScoreboard
+            hideScoreboard(p)
         }
 
         scoreboardMap.clear()
@@ -97,7 +95,19 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
         scoreboardMap[event.player.uniqueId]?.setScore(-12, event.sanity.toString() + "%§2 ")?.show()
     }
 
-    public fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
+    public fun showScoreboard(player: RPlayer) {
+        val scoreboard = RScoreboard("§e§lHungerStruck", player.uniqueId)
+        setupScoreboard(scoreboard, player.rplayer)
+        scoreboard.show()
+        scoreboardMap.put(player.uniqueId, scoreboard)
+    }
+
+    public fun hideScoreboard(player: RPlayer) {
+        player.scoreboard = Bukkit.getScoreboardManager().mainScoreboard
+        scoreboardMap.remove(player.uniqueId)
+    }
+
+    private fun setupScoreboard(scoreboard: RScoreboard, player: RPlayer) {
         scoreboard.setScore(-1, "§1 ").setScore(-2, RConfig.Scoreboard.timeString).setScore(-3, "00:00")
         scoreboard.setScore(-4, "§2 ").setScore(-5, RConfig.Scoreboard.killsString).setScore(-6, "0")
         scoreboard.setScore(-7, "§3 ").setScore(-8, RConfig.Scoreboard.aliveString).setScore(-9, this.match.alivePlayers.size.toString())

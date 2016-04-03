@@ -13,13 +13,9 @@ class ScoreboardChangeCallback : PlayerSettingCallback() {
         if (player.rplayer.match == null) return
         var scoreboardModule: ScoreboardModule = player.rplayer.match!!.moduleContext.getModule<ScoreboardModule>()!!
         if (newValue == true) {
-            val scoreboard = RScoreboard("§e§lHungerStruck", player.uniqueId)
-            scoreboardModule.setupScoreboard(scoreboard, player.rplayer)
-            scoreboard.show()
-            scoreboardModule.scoreboardMap.put(player.uniqueId, scoreboard)
+            scoreboardModule.showScoreboard(player.rplayer)
         } else {
-            player.scoreboard = Bukkit.getScoreboardManager().mainScoreboard
-            scoreboardModule.scoreboardMap.remove(player.uniqueId)
+            scoreboardModule.hideScoreboard(player.rplayer)
         }
     }
 }
