@@ -7,8 +7,6 @@ import org.jdom2.Document
 
 /**
  * Parses regions. Kewl rite
- *
- * Created by molenzwiebel on 21-12-15.
  */
 class RegionModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     init {

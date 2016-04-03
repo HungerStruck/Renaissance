@@ -23,9 +23,6 @@ import org.bukkit.potion.PotionEffectType
 import org.jdom2.Document
 import java.util.*
 
-/**
- * Created by molenzwiebel on 17-01-16.
- */
 class ThirstModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     val playerThirst: WeakHashMap<Player, Int> = WeakHashMap()
 

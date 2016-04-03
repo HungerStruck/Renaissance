@@ -6,8 +6,6 @@ import java.io.IOException
 
 /**
  * MapUtils ported to Kotlin.
- *
- * Created by molenzwiebel on 22-12-15.
  */
 object FileUtil {
     fun copy(source: File, destination: File, force: Boolean = false) {

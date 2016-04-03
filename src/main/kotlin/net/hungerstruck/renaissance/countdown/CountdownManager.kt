@@ -1,8 +1,5 @@
 package net.hungerstruck.renaissance.countdown
 
-/**
- * Created by molenzwiebel on 01-01-16.
- */
 class CountdownManager {
     private val runningCountdowns: MutableList<CountdownWrapper> = arrayListOf()
 

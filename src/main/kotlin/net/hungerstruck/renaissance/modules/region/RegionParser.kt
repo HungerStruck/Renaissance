@@ -7,8 +7,6 @@ import org.jdom2.Element
 
 /**
  * Parses regions. Also duh
- *
- * Created by molenzwiebel on 21-12-15.
  */
 class RegionParser(val regionManager: RegionManager) {
     private final val KNOWN_TAGS = arrayOf("region", "rectangle", "cuboid", "circle", "cylinder", "sphere", "block", "union", "intersect", "negative")

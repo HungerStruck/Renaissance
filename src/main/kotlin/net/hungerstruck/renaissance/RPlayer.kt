@@ -3,7 +3,6 @@ package net.hungerstruck.renaissance
 import net.hungerstruck.renaissance.lobby.RLobby
 import net.hungerstruck.renaissance.match.RMatch
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -13,8 +12,6 @@ import org.bukkit.inventory.ItemStack
 
 /**
  * Player object for our needs.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 class RPlayer(val bukkit: Player) : Player by bukkit {
     companion object : Listener {

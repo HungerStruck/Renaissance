@@ -15,9 +15,6 @@ import org.bukkit.scheduler.BukkitTask
 import org.jdom2.Document
 import java.util.*
 
-/**
- * Created by teddy on 31/03/2016.
- */
 class ParticleModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     private val random: Random

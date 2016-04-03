@@ -4,14 +4,11 @@ import net.hungerstruck.renaissance.get
 import net.hungerstruck.renaissance.match.RMatch
 import net.hungerstruck.renaissance.modules.region.RectangleRegion
 import net.hungerstruck.renaissance.modules.region.RegionModule
-import net.hungerstruck.renaissance.rplayer
 import net.hungerstruck.renaissance.xml.module.Dependencies
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import net.hungerstruck.renaissance.xml.parseVector2D
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.util.Vector
@@ -19,8 +16,6 @@ import org.jdom2.Document
 
 /**
  * Boundary module.
- *
- * Created by molenzwiebel on 21-12-15.
  */
 @Dependencies(RegionModule::class)
 class BoundaryModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

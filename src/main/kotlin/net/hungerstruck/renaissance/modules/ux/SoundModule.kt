@@ -9,9 +9,6 @@ import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.jdom2.Document
 
-/**
- * Created by teddy on 30/03/2016.
- */
 class SoundModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     init {

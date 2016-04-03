@@ -16,8 +16,6 @@ import javax.script.ScriptEngine
 
 /**
  * Bukkit entry point for Renaissance.
- *
- * Created by molenzwiebel on 22-12-15.
  */
 class RenaissancePlugin : JavaPlugin() {
     private val sessions: MutableMap<CommandSender, ScriptEngine> = hashMapOf()

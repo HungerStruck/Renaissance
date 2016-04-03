@@ -6,9 +6,6 @@ import org.bukkit.util.Vector
 import org.jdom2.Element
 import java.util.*
 
-/**
- * Created by molenzwiebel on 20-12-15.
- */
 private fun Player.getRPlayer(): RPlayer {
     if (RPlayer.INSTANCES[this] != null) {
         return RPlayer.INSTANCES[this]!!

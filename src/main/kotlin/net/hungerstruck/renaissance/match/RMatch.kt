@@ -12,19 +12,14 @@ import net.hungerstruck.renaissance.xml.module.RModuleContext
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.Sound
 import org.bukkit.World
 import org.bukkit.boss.BarColor
 import org.bukkit.boss.BarFlag
 import org.bukkit.boss.BarStyle
-import org.bukkit.boss.BossBar
-import org.bukkit.scheduler.BukkitScheduler
 
 /**
  * Represents a match.
- *
- * Created by molenzwiebel on 20-12-15.
- */
+*/
 class RMatch {
     val id: Int
     val map: RMap

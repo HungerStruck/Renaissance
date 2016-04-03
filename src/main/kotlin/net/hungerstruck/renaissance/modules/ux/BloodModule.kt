@@ -11,9 +11,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
 import org.jdom2.Document
 
-/**
- * Created by teddy on 01/04/2016.
- */
 class BloodModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     private val particle: ParticleBuilder
 

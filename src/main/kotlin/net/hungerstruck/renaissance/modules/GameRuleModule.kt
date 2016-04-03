@@ -6,9 +6,6 @@ import net.hungerstruck.renaissance.xml.module.RModuleContext
 import net.hungerstruck.renaissance.xml.toBool
 import org.jdom2.Document
 
-/**
- * Created by molenzwiebel on 21-12-15.
- */
 class GameRuleModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
     val rules: Map<String, Boolean>
 

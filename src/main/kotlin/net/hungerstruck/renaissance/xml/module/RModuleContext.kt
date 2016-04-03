@@ -6,9 +6,6 @@ import net.hungerstruck.renaissance.modules.region.RegionParser
 import org.jdom2.Document
 import kotlin.reflect.KClass
 
-/**
- * Created by molenzwiebel on 20-12-15.
- */
 class RModuleContext {
     final val modules: MutableSet<RModule> = hashSetOf()
 

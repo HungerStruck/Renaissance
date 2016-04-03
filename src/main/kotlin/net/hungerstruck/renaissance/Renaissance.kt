@@ -1,6 +1,5 @@
 package net.hungerstruck.renaissance
 
-import net.hungerstruck.renaissance.commands.MapCommands
 import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.countdown.CountdownManager
 import net.hungerstruck.renaissance.listeners.ConnectionListener
@@ -24,8 +23,6 @@ import java.io.File
 
 /**
  * Main class.
- *
- * Created by molenzwiebel on 20-12-15.
  */
 object Renaissance {
     var plugin: JavaPlugin? = null

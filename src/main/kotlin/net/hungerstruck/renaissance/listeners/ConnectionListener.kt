@@ -16,8 +16,6 @@ import org.bukkit.event.player.PlayerQuitEvent
 
 /**
  * Handles connections. Basically just assigns a player to a lobby or match.
- *
- * Created by molenzwiebel on 01-01-16.
  */
 class ConnectionListener : Listener {
     @EventHandler

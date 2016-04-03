@@ -12,12 +12,10 @@ import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
-import org.bukkit.GameMode
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
 import org.bukkit.event.block.Action
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
@@ -35,8 +33,6 @@ import java.util.*
 
 /**
  * Handles player death, respawning and observer interaction prevention.
- *
- * Created by molenzwiebel on 03-01-16.
  */
 @Dependencies
 class DeathModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {

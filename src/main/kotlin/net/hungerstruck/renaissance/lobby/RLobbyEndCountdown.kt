@@ -5,8 +5,6 @@ import net.hungerstruck.renaissance.countdown.Countdown
 
 /**
  * Lobby end countdown.
- *
- * Created by molenzwiebel on 01-01-16.
  */
 class RLobbyEndCountdown(val lobby: RLobby) : Countdown() {
     override fun onTick(timeLeft: Int) {

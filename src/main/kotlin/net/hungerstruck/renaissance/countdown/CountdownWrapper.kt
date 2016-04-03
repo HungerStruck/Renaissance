@@ -3,9 +3,6 @@ package net.hungerstruck.renaissance.countdown
 import net.hungerstruck.renaissance.Renaissance
 import org.bukkit.scheduler.BukkitRunnable
 
-/**
- * Created by molenzwiebel on 01-01-16.
- */
 class CountdownWrapper(val countdown: Countdown) : BukkitRunnable() {
     var timeLeft: Int = -1
 

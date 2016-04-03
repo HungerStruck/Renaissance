@@ -2,33 +2,22 @@ package net.hungerstruck.renaissance.modules.scoreboard
 
 import net.hungerstruck.renaissance.RPlayer
 import net.hungerstruck.renaissance.Renaissance
-import net.hungerstruck.renaissance.RenaissancePlugin
 import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.event.match.RMatchEndEvent
-import net.hungerstruck.renaissance.event.match.RMatchLoadEvent
 import net.hungerstruck.renaissance.event.match.RMatchStartEvent
 import net.hungerstruck.renaissance.event.player.RPlayerSanityUpdateEvent
 import net.hungerstruck.renaissance.event.player.RPlayerThirstUpdateEvent
 import net.hungerstruck.renaissance.match.RMatch
-import net.hungerstruck.renaissance.modules.SanityModule
 import net.hungerstruck.renaissance.rplayer
 import net.hungerstruck.renaissance.xml.module.RModule
 import net.hungerstruck.renaissance.xml.module.RModuleContext
-import net.hungerstruck.renaissance.xml.module.RModuleInfo
-import net.hungerstruck.renaissance.xml.module.RModuleRegistry
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.jdom2.Document
+import java.util.*
 
-import java.util.HashMap
-import java.util.UUID
-
-/**
- * Created by teddy on 29/03/2016.
- */
 class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext) : RModule(match, document, modCtx) {
 
     val scoreboardMap: MutableMap<UUID, RScoreboard>
