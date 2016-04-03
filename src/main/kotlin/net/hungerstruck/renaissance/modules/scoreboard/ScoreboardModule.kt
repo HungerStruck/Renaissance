@@ -97,7 +97,7 @@ class ScoreboardModule(match: RMatch, document: Document, modCtx: RModuleContext
 
     public fun showScoreboard(player: RPlayer) {
         val scoreboard = RScoreboard("§e§lHungerStruck", player.uniqueId)
-        setupScoreboard(scoreboard, player.rplayer)
+        setupScoreboard(scoreboard, player)
         scoreboard.show()
         scoreboardMap.put(player.uniqueId, scoreboard)
     }
