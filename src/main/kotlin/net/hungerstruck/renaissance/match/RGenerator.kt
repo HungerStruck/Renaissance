@@ -2,8 +2,7 @@ package net.hungerstruck.renaissance.match
 
 import org.bukkit.World
 import org.bukkit.generator.ChunkGenerator
-
-import java.util.Random
+import java.util.*
 
 class RGenerator : ChunkGenerator() {
 

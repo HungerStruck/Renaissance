@@ -1,6 +1,5 @@
 package net.hungerstruck.renaissance
 
-import net.hungerstruck.renaissance.commands.MapCommands
 import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.countdown.CountdownManager
 import net.hungerstruck.renaissance.listeners.ConnectionListener

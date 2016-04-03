@@ -7,7 +7,6 @@ import net.hungerstruck.renaissance.xml.RMapContext
 import org.bukkit.Bukkit
 import org.bukkit.World
 import org.bukkit.WorldCreator
-import org.bukkit.generator.ChunkGenerator
 import java.io.File
 import java.util.*
 

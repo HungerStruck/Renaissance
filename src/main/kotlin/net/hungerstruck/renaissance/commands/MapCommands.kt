@@ -1,10 +1,8 @@
 package net.hungerstruck.renaissance.commands
 
-import com.sk89q.minecraft.util.commands.Command;
-import com.sk89q.minecraft.util.commands.CommandContext;
+import com.sk89q.minecraft.util.commands.Command
+import com.sk89q.minecraft.util.commands.CommandContext
 import com.sk89q.minecraft.util.commands.CommandException
-import com.sk89q.minecraft.util.commands.CommandPermissions;
-import kotlin.jvm.JvmStatic;
 import net.hungerstruck.renaissance.rplayer
 import net.hungerstruck.renaissance.xml.RMap
 import net.hungerstruck.renaissance.xml.RMapInfo

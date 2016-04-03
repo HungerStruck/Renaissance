@@ -14,7 +14,6 @@ import org.bukkit.ChatColor
 import org.bukkit.ChatColor.*
 import org.bukkit.GameMode
 import org.bukkit.World
-import org.bukkit.scheduler.BukkitScheduler
 
 /**
  * Manages a simple match-specific lobby.

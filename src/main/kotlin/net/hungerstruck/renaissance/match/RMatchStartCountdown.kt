@@ -1,11 +1,9 @@
 package net.hungerstruck.renaissance.match
 
-import net.hungerstruck.renaissance.RPlayer
 import net.hungerstruck.renaissance.config.RConfig
 import net.hungerstruck.renaissance.countdown.Countdown
 import net.hungerstruck.renaissance.event.match.RMatchCountdownTickEvent
 import org.bukkit.Bukkit
-import org.bukkit.Sound
 
 class RMatchStartCountdown(val match: RMatch) : Countdown() {
     override fun onTick(timeLeft: Int) {
