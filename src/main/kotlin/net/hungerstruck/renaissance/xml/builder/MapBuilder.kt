@@ -7,8 +7,10 @@ import net.hungerstruck.renaissance.xml.Contributor
 import net.hungerstruck.renaissance.xml.RLobbyProperties
 import org.bukkit.Difficulty
 import org.bukkit.World
+import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
+import java.util.*
 
 /**
  * Class that builds maps.
@@ -141,10 +143,21 @@ class MapBuilder : AbstractMapBuilder<MapBuilder>() {
     }
 
     /**
-     * Specifies sanity settings.
+     * Specifies tnt settings.
      */
     fun tnt(x: TNTSettings.() -> Unit)
             = register<TNTSettingsModule>(TNTSettings().build(x))
+
+
+    class ProjectileSettings : BuilderPropertySet<ProjectileSettings>() {
+        var underwaterVelocityModifier: HashMap<EntityType, Float> = hashMapOf()
+    }
+
+    /**
+     * Specifies projectile settings.
+     */
+    fun projectiles(x: ProjectileSettings.() -> Unit)
+            = register<ProjectileModule>(ProjectileSettings().build(x))
 
     /**
      * Specifies timelock settings.
